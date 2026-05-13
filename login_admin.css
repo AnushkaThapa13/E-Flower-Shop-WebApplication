@@ -1,0 +1,57 @@
+/* Body */
+body {
+    margin: 0;
+    background: #151515;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Logo */
+.brand-logo {
+    height: 40px;
+}
+
+.brand-name {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    color: #eee7e7;
+    margin-left: 8px;
+}
+
+/* Center Content */
+.main-content {
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card */
+.login-card {
+    width: 350px;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+/* Inputs */
+.form-control {
+    border-radius: 5px;
+}
+
+/* Button */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
