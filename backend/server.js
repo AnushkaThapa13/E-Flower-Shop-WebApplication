@@ -43,7 +43,7 @@ app.use('/api/inventory', inventoryRoutes);
 // 3. HOMEPAGE ROUTE
 // ========================================================
 app.get('/', (req, res) => {
-    res.sendFile(path.join(frontendPath, 'Dashboard.html'));
+    res.sendFile(path.join(frontendPath, 'dashboard.html'));
 });
 
 const PORT = process.env.PORT || 5000;
