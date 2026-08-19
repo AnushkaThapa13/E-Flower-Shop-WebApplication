@@ -3,10 +3,8 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
 
-// Load environment variables early
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
-// 1. IMPORT ROUTES
 const authRoutes = require('./routes/authRoutes');
 const flowerRoutes = require('./routes/flowerRoutes');
 const adminRoutes = require('./routes/adminRoutes'); 
@@ -18,21 +16,19 @@ const inventoryRoutes = require('./routes/inventoryRoutes');
 
 const app = express();
 
-// Middleware
 app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 // ========================================================
-// 2. SERVE STATIC FRONTEND FILES
+// 1. SERVE FRONTEND (Sibling Directory: ../Flower_shop)
 // ========================================================
-// If your HTML/CSS/JS files are inside a 'public' folder:
-app.use(express.static(path.join(__dirname, 'public')));
+const frontendPath = path.join(__dirname, '..', 'Flower_shop');
 
-// (If your HTML files are directly in your project root, use this instead:)
-// app.use(express.static(__dirname));
+// Serve all static assets (CSS, JS, images, other HTML pages)
+app.use(express.static(frontendPath));
 
 // ========================================================
-// 3. BIND API ENDPOINTS
+// 2. API ENDPOINTS
 // ========================================================
 app.use('/api/auth', authRoutes);
 app.use('/api/flowers', flowerRoutes);
@@ -44,17 +40,15 @@ app.use('/api/payments', paymentsRoutes);
 app.use('/api/inventory', inventoryRoutes);
 
 // ========================================================
-// 4. SERVE HOMEPAGE (HTML)
+// 3. HOMEPAGE ROUTE
 // ========================================================
 app.get('/', (req, res) => {
-    // Points to public/index.html (adjust path if index.html is in root or another folder)
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(frontendPath, 'Dashboard.html'));
 });
 
-// Start listening for connections
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`===============================================`);
-    console.log(`🚀 Server is flying ahead smoothly on port ${PORT}`);
+    console.log(`🚀 Server running on port ${PORT}`);
     console.log(`===============================================`);
 });
