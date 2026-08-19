@@ -3,44 +3,52 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
 
-// Load environment variables early (before routes/db are imported).
+// Load environment variables early
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
-// 1. IMPORT ROUTES (Added your missing admin route module!)
+// 1. IMPORT ROUTES
 const authRoutes = require('./routes/authRoutes');
 const flowerRoutes = require('./routes/flowerRoutes');
-const adminRoutes = require('./routes/adminRoutes'); // <-- FIXED: Added this import line
+const adminRoutes = require('./routes/adminRoutes'); 
 const customersRoutes = require('./routes/customersRoutes');
 const productsRoutes = require('./routes/productsRoutes');
 const ordersRoutes = require('./routes/ordersRoutes');
 const paymentsRoutes = require('./routes/paymentsRoutes');
-const inventoryRoutes = require('./routes/inventoryRoutes'); // Admin CRUD for inventory
+const inventoryRoutes = require('./routes/inventoryRoutes'); 
 
 const app = express();
 
-// Enable Cross-Origin Resource Sharing so your frontend can talk to port 5000
+// Middleware
 app.use(cors({ origin: '*' }));
-app.use(express.json()); // Allows parsing of raw incoming JSON data packets
+app.use(express.json());
 
 // ========================================================
-// 2. BIND ENDPOINTS (Mounted your /api/admin tracking base)
+// 2. SERVE STATIC FRONTEND FILES
+// ========================================================
+// If your HTML/CSS/JS files are inside a 'public' folder:
+app.use(express.static(path.join(__dirname, 'public')));
+
+// (If your HTML files are directly in your project root, use this instead:)
+// app.use(express.static(__dirname));
+
+// ========================================================
+// 3. BIND API ENDPOINTS
 // ========================================================
 app.use('/api/auth', authRoutes);
 app.use('/api/flowers', flowerRoutes);
-app.use('/api/admin', adminRoutes); // <-- FIXED: Connected your admin routes here!
+app.use('/api/admin', adminRoutes); 
+app.use('/api/customers', customersRoutes);
+app.use('/api/products', productsRoutes);
+app.use('/api/orders', ordersRoutes);
+app.use('/api/payments', paymentsRoutes);
+app.use('/api/inventory', inventoryRoutes);
 
 // ========================================================
-// 3. ADMIN CRUD ENDPOINTS (Used by your HTML admin pages)
+// 4. SERVE HOMEPAGE (HTML)
 // ========================================================
-app.use('/customers', customersRoutes);
-app.use('/products', productsRoutes);
-app.use('/orders', ordersRoutes);
-app.use('/payments', paymentsRoutes);
-app.use('/inventory', inventoryRoutes);
-
-// Simple health check route to test in your web browser
 app.get('/', (req, res) => {
-    res.send('Flower Shop Backend Server is Live and Active! 🌸');
+    // Points to public/index.html (adjust path if index.html is in root or another folder)
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Start listening for connections
