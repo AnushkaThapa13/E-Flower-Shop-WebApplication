@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Inventory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <div class="sidebar">
+        <h2>Flower Shop Admin</h2>
+        <a href="indexadmin.html">Dashboard</a>
+        <a href="products.html">Products</a>
+        <a href="customers.html">Customers</a>
+        <a href="orders.html">Orders</a>
+        <a href="payments.html">Payments</a>
+        <a href="inventory.html">Inventory</a>
+    </div>
+
+    <div class="main">
+
+        <h1>Add Inventory</h1>
+
+        <form id="form">
+
+            <input type="text" id="item" placeholder="Item Name" required>
+            <input type="number" id="stock" placeholder="Stock" required>
+            <input type="number" id="price" placeholder="Price" required>
+
+            <button type="submit">Add</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+document.getElementById("form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    await fetch("http://localhost:5000/inventory", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            item: document.getElementById("item").value,
+            stock: document.getElementById("stock").value,
+            price: document.getElementById("price").value
+        })
+    });
+
+    alert("Inventory Added");
+    window.location.href = "inventory.html";
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wedding Flowers</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="flowerpage.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <img src="florian.png" alt="Florian Florist Logo">
+
+            <div class="logo-text">
+                Florian Florist
+            </div>
+
+        </div>
+
+        <!-- NAV ICONS -->
+
+        <div class="nav-icons">
+
+            <!-- WISHLIST -->
+
+            <a href="wishlist.html" class="icon-box">
+
+                <i class="fa-regular fa-heart"></i>
+
+                <span id="wishlist-count">0</span>
+
+            </a>
+
+            <!-- CART -->
+
+            <a href="cart.html" class="icon-box">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span id="cart-count">0</span>
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- SEARCH SECTION -->
+
+    <section class="search-section">
+
+        <input type="text" id="searchInput" placeholder="Search flower by name..." onkeyup="searchFlower()">
+
+        <button onclick="searchFlower()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+
+    <section class="products-container">
+
+        <!-- CARD 1 -->
+
+        <div class="product-card">
+
+            <img src="https://plus.unsplash.com/premium_photo-1671245156908-61e26926cef9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFyaWdvbGR8ZW58MHx8MHx8fDA%3D">
+            <div class="product-info">
+
+                <h2>Marigold</h2>
+
+                <p class="price">₹299</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 2 -->
+
+        <div class="product-card">
+
+            <img src="https://images.unsplash.com/photo-1674545118304-29ca1f9425b9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmVsYSUyMGZsb3dlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Bela Flower">
+
+            <div class="product-info">
+
+                <h2>Bela Flower</h2>
+
+                <p class="price">₹249</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 3 -->
+
+        <div class="product-card">
+
+            <img src="https://images.unsplash.com/photo-1629695328627-22cb7c873a6a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2hhbXBhfGVufDB8fDB8fHww" alt="Champa">
+
+            <div class="product-info">
+
+                <h2>Champa</h2>
+
+                <p class="price">₹349</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+       
+        <!-- CARD 5 -->
+
+        <div class="product-card">
+
+            <img src="https://images.unsplash.com/photo-1581938165093-050aeb5ef218?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9zZSUyMGRlY29yfGVufDB8fDB8fHww" alt="Hibiscus">
+
+            <div class="product-info">
+
+                <h2>Rose</h2>
+
+                <p class="price">₹299</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 6 -->
+
+        <div class="product-card">
+
+            <img src="https://images.unsplash.com/photo-1618510355097-77b432ca8436?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8amFzbWluZXxlbnwwfHwwfHx8MA%3D%3D" alt="Jasmine">
+
+            <div class="product-info">
+
+                <h2>Jasmine</h2>
+
+                <p class="price">₹249</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 7 -->
+
+        <div class="product-card">
+
+            <img src="https://plus.unsplash.com/premium_photo-1695750536632-7e3055fc48d5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bG90dXN8ZW58MHx8MHx8fDA%3D" alt="Lotus">
+
+            <div class="product-info">
+
+                <h2>Lotus</h2>
+
+                <p class="price">₹349</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 8 -->
+
+        <div class="product-card">
+
+            <img src="https://plus.unsplash.com/premium_photo-1710007813170-4802688e9862?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8TWFnbm9saWElMjBDaGFtcGFjYXxlbnwwfHwwfHx8MA%3D%3D" alt="Magnolia Champaca">
+
+            <div class="product-info">
+
+                <h2>Magnolia Champaca</h2>
+
+                <p class="price">₹199</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+       
+
+        <!-- CARD 10 -->
+
+        <div class="product-card">
+
+            <img src="https://images.unsplash.com/photo-1630245898698-838b000bcb25?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8T2xlYW5kZXJ8ZW58MHx8MHx8fDA%3D" alt="Oleander">
+
+            <div class="product-info">
+
+                <h2>Oleander</h2>
+
+                <p class="price">₹249</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <img src="https://media.istockphoto.com/id/115935813/photo/tuberose.webp?a=1&b=1&s=612x612&w=0&k=20&c=VxWMD1ZMpudCYNce1frEMmbjr_dL5o5nG7UaM1JJH9U=" alt="Tuberose">
+
+            <div class="product-info">
+
+                <h2>Tuberose</h2>
+
+                <p class="price">₹199</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <script>
+
+        let cartCount = 0;
+        let wishlistCount = 0;
+
+        function addToCart() {
+
+            cartCount++;
+
+            document.getElementById("cart-count").innerText = cartCount;
+        }
+
+        function addToWishlist() {
+
+            wishlistCount++;
+
+            document.getElementById("wishlist-count").innerText = wishlistCount;
+        }
+
+        function searchFlower() {
+
+            let input =
+                document.getElementById("searchInput")
+                    .value
+                    .toLowerCase();
+
+            let cards =
+                document.querySelectorAll(".product-card");
+
+            cards.forEach(card => {
+
+                let flowerName =
+                    card.querySelector("h2")
+                        .innerText
+                        .toLowerCase();
+
+                if (flowerName.includes(input)) {
+
+                    card.style.display = "";
+
+                }
+                else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>

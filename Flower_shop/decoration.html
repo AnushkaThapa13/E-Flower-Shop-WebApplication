@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Decoration Flowers</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="flowerpage.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <img src="florian.png" alt="Florian Florist Logo">
+
+            <div class="logo-text">
+                Florian Florist
+            </div>
+
+        </div>
+
+        <!-- NAV ICONS -->
+
+        <div class="nav-icons">
+
+            <!-- WISHLIST -->
+
+            <a href="wishlist.html" class="icon-box">
+
+                <i class="fa-regular fa-heart"></i>
+
+                <span id="wishlist-count">0</span>
+
+            </a>
+
+            <!-- CART -->
+
+            <a href="cart.html" class="icon-box">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span id="cart-count">0</span>
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- SEARCH SECTION -->
+
+    <section class="search-section">
+
+        <input type="text" id="searchInput" placeholder="Search flower by name..." onkeyup="searchFlower()">
+
+        <button onclick="searchFlower()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+
+    <section class="products-container">
+
+        <!-- CARD 1 -->
+
+        <div class="product-card">
+
+            <img src="https://images.unsplash.com/photo-1668750433759-d7858716f004?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Baby's Breath">
+
+            <div class="product-info">
+
+                <h2>Baby's Breath</h2>
+
+                <p class="price">₹299</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 2 -->
+
+        <div class="product-card">
+
+            <img src="https://plus.unsplash.com/premium_photo-1676068243733-df1880c2aef8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2FsbGElMjBMaWx5fGVufDB8fDB8fHww" alt="Calla Lily">
+
+            <div class="product-info">
+
+                <h2>Calla Lily</h2>
+
+                <p class="price">₹249</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 3 -->
+
+        <div class="product-card">
+
+            <img src="https://images.unsplash.com/photo-1612589432434-bf513e5131a0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Q2FybmF0aW9ufGVufDB8fDB8fHww" alt="Carnation">
+
+            <div class="product-info">
+
+                <h2>Carnation</h2>
+
+                <p class="price">₹349</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 4 -->
+
+        <div class="product-card">
+
+            <img src="https://images.unsplash.com/photo-1589914748897-1bd1b6bff4bd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Q2hyeXNhbnRoZW11bXxlbnwwfHwwfHx8MA%3D%3D" alt="Chrysanthemum">
+
+            <div class="product-info">
+
+                <h2>Chrysanthemum</h2>
+
+                <p class="price">₹199</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 5 -->
+
+        <div class="product-card">
+
+            <img src="https://images.unsplash.com/photo-1699217394471-ac2b774bd070?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8RGVscGhpbml1bXxlbnwwfHwwfHx8MA%3D%3D" alt="Delphinium">
+
+            <div class="product-info">
+
+                <h2>Delphinium</h2>
+
+                <p class="price">₹299</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 6 -->
+
+        <div class="product-card">
+
+            <img src="https://plus.unsplash.com/premium_photo-1677329952685-aecee218884a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8R2xhZGlvbHVzfGVufDB8fDB8fHww" alt="Gladiolus">
+
+            <div class="product-info">
+
+                <h2>Gladiolus</h2>
+
+                <p class="price">₹249</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 7 -->
+
+        <div class="product-card">
+
+            <img src="https://images.unsplash.com/photo-1621518856558-9b2ce2d0660d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8SHlkcmFuZ2VhfGVufDB8fDB8fHww" alt="Hydrangea">
+
+            <div class="product-info">
+
+                <h2>Hydrangea</h2>
+
+                <p class="price">₹349</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 8 -->
+
+        <div class="product-card">
+
+            <img src="img/wedding/Lily.jpg" alt="Lily">
+
+            <div class="product-info">
+
+                <h2>Lily</h2>
+
+                <p class="price">₹199</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 9 -->
+
+        <div class="product-card">
+
+            <img src="https://images.unsplash.com/photo-1661142175513-a5f0871f1ad1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFyaWdvbGR8ZW58MHx8MHx8fDA%3D" alt="Marigold">
+
+            <div class="product-info">
+
+                <h2>Marigold</h2>
+
+                <p class="price">₹299</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 10 -->
+
+        <div class="product-card">
+
+            <img src="https://images.unsplash.com/photo-1610397648930-477b8c7f0943?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8b3JjaGlkfGVufDB8fDB8fHww" alt="Orchid">
+
+            <div class="product-info">
+
+                <h2>Orchid</h2>
+
+                <p class="price">₹249</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 11 -->
+
+        <div class="product-card">
+
+            <img src="https://images.unsplash.com/photo-1575178094668-132dc931ad35?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVvbnl8ZW58MHx8MHx8fDA%3D" alt="Peony">
+
+            <div class="product-info">
+
+                <h2>Peony</h2>
+
+                <p class="price">₹349</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 12 -->
+
+        <div class="product-card">
+
+            <img src="https://images.unsplash.com/photo-1586082207282-3dcb61d25ebd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cm9zZXxlbnwwfHwwfHx8MA%3D%3D" alt="Rose">
+
+            <div class="product-info">
+
+                <h2>Rose</h2>
+
+                <p class="price">₹199</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 13 -->
+
+        <div class="product-card">
+
+            <img src="https://media.istockphoto.com/id/115935813/photo/tuberose.webp?a=1&b=1&s=612x612&w=0&k=20&c=VxWMD1ZMpudCYNce1frEMmbjr_dL5o5nG7UaM1JJH9U=" alt="Tuberose">
+
+            <div class="product-info">
+
+                <h2>Tuberose</h2>
+
+                <p class="price">₹299</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 14 -->
+
+        <div class="product-card">
+
+            <img src="https://images.unsplash.com/photo-1561181226-e8a7edd504c6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dHVsaXB8ZW58MHx8MHx8fDA%3D" alt="Tulip">
+
+            <div class="product-info">
+
+                <h2>Tulip</h2>
+
+                <p class="price">₹249</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 15 -->
+
+        <div class="product-card">
+
+            <img src="https://images.unsplash.com/photo-1619380895651-6158a1d8e6e7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fFdpc3RlcmlhfGVufDB8fDB8fHww" alt="Wisteria">
+
+            <div class="product-info">
+
+                <h2>Wisteria</h2>
+
+                <p class="price">₹349</p>
+
+                <div class="buttons">
+
+                    <button onclick="addToCart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+
+                    <button onclick="addToWishlist()">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <script>
+
+        let cartCount = 0;
+        let wishlistCount = 0;
+
+        function addToCart() {
+
+            cartCount++;
+
+            document.getElementById("cart-count").innerText = cartCount;
+        }
+
+        function addToWishlist() {
+
+            wishlistCount++;
+
+            document.getElementById("wishlist-count").innerText = wishlistCount;
+        }
+
+        function searchFlower() {
+
+            let input =
+                document.getElementById("searchInput")
+                    .value
+                    .toLowerCase();
+
+            let cards =
+                document.querySelectorAll(".product-card");
+
+            cards.forEach(card => {
+
+                let flowerName =
+                    card.querySelector("h2")
+                        .innerText
+                        .toLowerCase();
+
+                if (flowerName.includes(input)) {
+
+                    card.style.display = "";
+
+                }
+                else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>

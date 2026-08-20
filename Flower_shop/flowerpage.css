@@ -1,0 +1,312 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0c0c0c;
+    color: #f5f5f5;
+
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* NAVBAR */
+
+.navbar {
+
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 22px 70px;
+
+    background: #050505;
+
+    border-bottom: 1px solid #262626;
+
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.logo{
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+}
+
+.logo img{
+
+    width: 55px;
+    height: 55px;
+
+    object-fit: contain;
+}
+
+.logo-text{
+
+    font-family: 'Cinzel', serif;
+
+    font-size: 26px;
+
+    font-weight: 600;
+
+    color: #f0dfd7;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+/* NAV ICONS */
+
+.nav-icons {
+
+    display: flex;
+    gap: 25px;
+}
+
+.nav-icons a {
+
+    color: #d6d6d6;
+
+    font-size: 18px;
+
+    transition: 0.3s;
+}
+
+.nav-icons a:hover {
+
+    color: #b78b8b;
+}
+
+/* SEARCH SECTION */
+
+.search-section {
+
+    display: flex;
+    justify-content: center;
+
+    margin: 50px 0;
+}
+
+.search-section input {
+
+    width: 520px;
+
+    padding: 16px 20px;
+
+    background: #161616;
+
+    border: 1px solid #323232;
+
+    color: white;
+
+    outline: none;
+
+    border-radius: 10px 0 0 10px;
+
+    font-size: 17px;
+}
+
+.search-section button {
+
+    width: 70px;
+
+    border: none;
+
+    background: #4a3038;
+
+    color: white;
+
+    font-size: 18px;
+
+    border-radius: 0 10px 10px 0;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.search-section button:hover {
+
+    background: #69454f;
+}
+
+/* PRODUCTS SECTION */
+
+.products-container {
+
+    padding: 20px 70px 70px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(250px, 250px));
+
+    justify-content: center;
+
+    gap: 30px;
+}
+
+/* PRODUCT CARD */
+
+.product-card {
+
+    background: #141414;
+
+    border: 1px solid #262626;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    transition: 0.4s;
+}
+
+.product-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow: 0 0 18px rgba(100, 70, 70, 0.4);
+}
+
+.product-card img {
+
+    width: 100%;
+    height: 320px;
+
+    object-fit: cover;
+}
+
+.product-info {
+
+    padding: 22px;
+}
+
+.product-info h2 {
+
+    font-size: 30px;
+
+    color: #f0dfd7;
+
+    margin-bottom: 8px;
+}
+
+.price {
+
+    font-size: 24px;
+
+    color: #b78b8b;
+
+    margin-bottom: 18px;
+}
+
+/* ICON COUNTERS */
+
+.icon-box {
+
+    position: relative;
+
+    color: #d6d6d6;
+}
+
+.icon-box span {
+
+    position: absolute;
+
+    top: -10px;
+    right: -12px;
+
+    width: 20px;
+    height: 20px;
+
+    background: #7a4c58;
+
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Arial;
+}
+
+/* BUTTONS */
+
+.buttons {
+
+    display: flex;
+
+    gap: 12px;
+}
+
+.buttons button {
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #252525;
+
+    color: #f0dfd7;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.buttons button:hover {
+
+    background: #4a3038;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media(max-width: 992px) {
+
+    .navbar {
+
+        flex-direction: column;
+        gap: 20px;
+
+        padding: 25px;
+    }
+
+    .products-container {
+
+        padding: 30px;
+    }
+}
+
+@media(max-width: 600px) {
+
+    .logo {
+
+        font-size: 34px;
+    }
+
+    .search-section input {
+
+        width: 75%;
+    }
+
+    .product-card img {
+
+        height: 260px;
+    }
+}

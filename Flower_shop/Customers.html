@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <div class="sidebar">
+        <h2>Flower Shop Admin</h2>
+        <a href="indexadmin.html">Dashboard</a>
+        <a href="products.html">Products</a>
+        <a href="customers.html">Customers</a>
+        <a href="orders.html">Orders</a>
+        <a href="payments.html">Payments</a>
+        <a href="inventory.html">Inventory</a>
+    </div>
+
+    <div class="main">
+
+        <div class="topbar">
+            <h1>Customers</h1>
+
+            <a href="add-customer.html">
+                <button>Add Customer</button>
+            </a>
+        </div>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody id="customerTable"></tbody>
+        </table>
+
+    </div>
+
+</div>
+
+<script>
+fetch("http://localhost:5000/customers")
+.then(res => res.json())
+.then(data => {
+    let rows = "";
+    data.forEach(c => {
+        rows += `
+            <tr>
+                <td>${c.id}</td>
+                <td>${c.name}</td>
+                <td>${c.email}</td>
+                <td>${c.phone}</td>
+            </tr>
+        `;
+    });
+    document.getElementById("customerTable").innerHTML = rows;
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower of the Day - Florian Florist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="flowerpage.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-black px-3">
+        <a class="navbar-brand d-flex align-items-center" href="dashboard.html">
+            <img src="florian.png" alt="Logo" class="brand-logo">
+            <span class="brand-name ms-2">Florian Florist</span>
+        </a>
+
+        <div class="d-flex align-items-center gap-4">
+            <div class="nav-item-custom">
+                <i class="bi bi-heart text-white"></i>
+            </div>
+
+            <a href="checkout.html" class="nav-item-custom d-flex align-items-center gap-1 text-decoration-none">
+                <i class="bi bi-cart text-white"></i>
+            </a>
+            
+            <div id="userNavSlot" class="nav-item-custom d-flex align-items-center gap-1">
+                <a href="login_customer.html" class="d-flex align-items-center gap-1 text-decoration-none">
+                    <i class="bi bi-person text-white"></i>
+                    <span class="nav-text text-white">Sign In</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="flower-hero">
+                    <img src="https://images.pexels.com/photos/36420493/pexels-photo-36420493.jpeg" 
+                         alt="Flower of the Day" 
+                         class="img-fluid rounded shadow-lg flower-image">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="flower-details p-4">
+                    <span class="badge bg-danger mb-3">🌸 Flower of the Day</span>
+                    <h1 class="display-4 fw-bold mb-3">Mixed Seasonal Blooms</h1>
+                    <p class="lead text-muted mb-4">
+                        Fresh mixed flowers for any occasion. A beautiful arrangement featuring the season's finest blooms, 
+                        carefully selected to bring joy and elegance to your special moments.
+                    </p>
+                    
+                    <div class="price-section mb-4">
+                        <h2 class="text-danger fw-bold">₹649.00</h2>
+                        <p class="text-muted small">Inclusive of all taxes</p>
+                    </div>
+
+                    <div class="flower-features mb-4">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <span>Fresh seasonal flowers</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <span>Eco-friendly wrapping</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <span>Same-day delivery available</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <span>Hand-tied by expert florists</span>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-danger btn-lg me-2" onclick="addToCart()">
+                            <i class="bi bi-cart-plus me-2"></i>Add to Cart
+                        </button>
+                        <button class="btn btn-outline-danger btn-lg" onclick="buyNow()">
+                            <i class="bi bi-lightning-fill me-2"></i>Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card p-4 shadow-sm">
+                    <h3 class="mb-3">Product Description</h3>
+                    <p class="text-muted">
+                        Our Mixed Seasonal Blooms arrangement is a celebration of nature's finest offerings. 
+                        Each bouquet is handcrafted with love, featuring a stunning variety of seasonal flowers 
+                        that capture the essence of the current season. Perfect for birthdays, anniversaries, 
+                        or simply to brighten someone's day.
+                    </p>
+                    <p class="text-muted">
+                        The arrangement includes a carefully curated selection of premium flowers, 
+                        expertly arranged in our signature eco-friendly wrapping. Each stem is chosen 
+                        for its freshness and beauty, ensuring that your gift makes a lasting impression.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer mt-5">
+        <div class="container text-center py-3">
+            <p class="m-0 text-muted small">© 2026 Florian Florist Flower Store. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Security check: Redirect to login if not authenticated
+            const token = localStorage.getItem("userToken");
+            if (!token) {
+                // Save current page for redirect after login
+                localStorage.setItem("redirectAfterLogin", "flowers_day.html");
+                alert("Please login to view this page");
+                window.location.href = "login_customer.html";
+            }
+        });
+
+        function addToCart() {
+            const token = localStorage.getItem("userToken");
+            if (!token) {
+                localStorage.setItem("redirectAfterLogin", "flowers_day.html");
+                alert("Please login to add items to cart");
+                window.location.href = "login_customer.html";
+                return;
+            }
+            alert("Added to cart successfully!");
+        }
+
+        function buyNow() {
+            const token = localStorage.getItem("userToken");
+            if (!token) {
+                localStorage.setItem("redirectAfterLogin", "flowers_day.html");
+                alert("Please login to purchase");
+                window.location.href = "login_customer.html";
+                return;
+            }
+            window.location.href = "checkout.html";
+        }
+    </script>
+</body>
+</html>

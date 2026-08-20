@@ -1,0 +1,70 @@
+
+body {
+    margin: 0;
+    background: #141313;
+}
+
+.navbar {
+    background-color: #000000;
+    position: fixed;   /* keeps it at top */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+
+.brand-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-name {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    color: #eee7e7;
+    margin-left: 8px;
+    text-shadow: 0 0 5px rgba(255, 246, 246, 0.3);
+}
+
+
+.nav-text {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+
+.main-content {
+    height: calc(100vh - 70px); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.role {
+    cursor: pointer;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.role:hover {
+    transform: scale(1.1);
+}
+
+.circle-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #999ca0;
+}
+
+
+.mb-4 {
+    color: aliceblue;
+}
+
+.roles {
+    color: white;
+}

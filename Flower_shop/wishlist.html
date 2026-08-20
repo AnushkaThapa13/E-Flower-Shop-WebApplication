@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout - Florian Florist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <style>
+        .checkout-container { max-width: 1100px; margin-top: 40px; margin-bottom: 60px; }
+        .order-summary-card { background-color: #f9f9f9; border-radius: 8px; border: 1px solid #eef0f2; }
+        .product-thumbnail { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; }
+        .btn-checkout { background-color: #000; color: #fff; transition: all 0.2s ease; }
+        .btn-checkout:hover { background-color: #222; color: #fff; }
+    </style>
+</head>
+<body class="bg-light">
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark bg-black px-3">
+    <a class="navbar-brand d-flex align-items-center" href="home.html">
+        <img src="florian.png" alt="Logo" class="brand-logo" style="height: 40px;">
+        <span class="brand-name ms-2">Florian Florist</span>
+    </a>
+    <a href="home.html" class="btn btn-sm btn-outline-light"><i class="bi bi-arrow-left me-1"></i> Continue Shopping</a>
+</nav>
+
+<!-- MAIN CHECKOUT LAYOUT CONTAINER -->
+<div class="container checkout-container">
+    <h2 class="mb-4 fw-semibold text-center text-md-start">Secure Checkout</h2>
+    
+    <div class="row g-4">
+        <!-- LEFT SIDE: BILLING & SHIPPING DETAILS FORM -->
+        <div class="col-12 col-lg-7">
+            <div class="card p-4 shadow-sm border-0 bg-white rounded-3">
+                <h4 class="mb-3 fw-semibold"><i class="bi bi-truck me-2"></i>Delivery Information</h4>
+                <form id="checkoutForm" onsubmit="processOrderPlacement(event)">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">First Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Last Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-bold">Shipping Address</label>
+                            <input type="text" class="form-control" placeholder="Apartment, suite, unit, street address" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">City</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Phone Number</label>
+                            <input type="tel" class="form-control" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <h4 class="mb-3 fw-semibold"><i class="bi bi-credit-card-2-front me-2"></i>Payment Method</h4>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="cod" checked>
+                        <label class="form-check-label small" for="cod">
+                            <strong>Cash on Delivery (COD)</strong>
+                        </label>
+                    </div>
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="onlinePay" disabled>
+                        <label class="form-check-label small text-muted" for="onlinePay">
+                            Online UPI / Cards (Temporarily Offline 🛠️)
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-checkout w-100 py-3 fw-semibold rounded-3 mt-2">
+                        Place Order <i class="bi bi-lock-fill ms-1"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE: LIVE DYNAMIC CART ORDER SUMMARY -->
+        <div class="col-12 col-lg-5">
+            <div class="card p-4 shadow-sm order-summary-card position-sticky" style="top: 20px;">
+                <h4 class="mb-3 fw-semibold d-flex justify-content-between align-items-center">
+                    <span>Order Summary</span>
+                    <span class="badge bg-black rounded-pill fs-6" id="cartBadgeCount">0</span>
+                </h4>
+
+                <!-- Target placeholder box for list loops -->
+                <div id="checkoutItemsList" class="mb-3" style="max-height: 350px; overflow-y: auto;">
+                    <!-- Items will inject here programmatically via JS -->
+                    <p class="text-muted text-center py-4 my-0">Your checkout bundle is currently empty.</p>
+                </div>
+
+                <hr class="my-3">
+
+                <!-- PROMO CODE INTERFACE -->
+                <div class="input-group mb-3">
+                    <input type="text" id="promoCodeInput" class="form-control" placeholder="Promo Code (Try: FLORIAN10)">
+                    <button class="btn btn-outline-dark" onclick="applyDiscountToken()">Apply</button>
+                </div>
+
+                <!-- SUB-TOTAL PRICE METRICS BREAKDOWN CONTAINER -->
+                <div class="d-flex justify-content-between mb-2 small text-muted">
+                    <span>Subtotal</span>
+                    <span id="summarySubtotal">₹0.00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2 small text-muted">
+                    <span>Estimated Tax (18% GST)</span>
+                    <span id="summaryTax">₹0.00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2 small text-muted text-success d-none" id="discountRow">
+                    <span>Discount (10% Applied)</span>
+                    <span id="summaryDiscount">-₹0.00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2 small text-muted">
+                    <span>Standard Shipping</span>
+                    <span class="text-success fw-semibold">FREE</span>
+                </div>
+                <hr class="my-2">
+                <div class="d-flex justify-content-between mb-0 fs-5 fw-bold text-dark">
+                    <span>Grand Total</span>
+                    <span id="summaryGrandTotal">₹0.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DATA PROCESSING SCRIPT CONTROLLER -->
+<script>
+    let rawSubtotal = 0;
+    let appliedDiscount = 0;
+
+    document.addEventListener("DOMContentLoaded", () => {
+        renderCheckoutSummary();
+    });
+
+    function renderCheckoutSummary() {
+        // 1. Pull active items list array out of browser memory storage 
+        // Note: For testing purposes, it defaults to a beautiful fallback mock bouquet if your local storage is empty
+        let cart = JSON.parse(localStorage.getItem("userCart")) || [
+            { id: 101, name: "Luxury Red Roses Bouquet", price: 1299, image: "https://images.pexels.com/photos/36147881/pexels-photo-36147881.jpeg", quantity: 1 },
+            { id: 104, name: "Premium Terrarium Fern Indoor Plant", price: 650, image: "https://images.pexels.com/photos/36345700/pexels-photo-36345700.jpeg", quantity: 2 }
+        ];
+
+        const targetList = document.getElementById("checkoutItemsList");
+        const badgeCount = document.getElementById("cartBadgeCount");
+        
+        if (cart.length === 0) {
+            targetList.innerHTML = `<p class="text-muted text-center py-4 my-0">Your checkout bundle is empty. Return to home to add selections.</p>`;
+            badgeCount.innerText = "0";
+            calculateTotals();
+            return;
+        }
+
+        badgeCount.innerText = cart.reduce((total, item) => total + item.quantity, 0);
+        targetList.innerHTML = ""; // Clear existing empty status string text placeholders
+        rawSubtotal = 0;
+
+        // 2. Loop over each selection and build layout items dynamically
+        cart.forEach(item => {
+            const itemCost = item.price * item.quantity;
+            rawSubtotal += itemCost;
+
+            const productRowHTML = `
+                <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2 bg-white p-2 rounded shadow-xs">
+                    <div class="d-flex align-items-center gap-3">
+                        <img src="${item.image}" alt="${item.name}" class="product-thumbnail">
+                        <div>
+                            <h6 class="mb-0 fw-semibold text-dark small text-truncate" style="max-width: 220px;">${item.name}</h6>
+                            <small class="text-muted">Qty: ${item.quantity} × ₹${item.price.toFixed(2)}</small>
+                        </div>
+                    </div>
+                    <span class="fw-bold text-dark small">₹${itemCost.toFixed(2)}</span>
+                </div>
+            `;
+            targetList.insertAdjacentHTML("beforeend", productRowHTML);
+        });
+
+        calculateTotals();
+    }
+
+    function calculateTotals() {
+        const gstTaxRate = 0.18; // 18% standard GST calculation rules
+        const taxAmount = rawSubtotal * gstTaxRate;
+        const totalBeforeDiscount = rawSubtotal + taxAmount;
+        const ultimateGrandTotal = totalBeforeDiscount - appliedDiscount;
+
+        document.getElementById("summarySubtotal").innerText = `₹${rawSubtotal.toFixed(2)}`;
+        document.getElementById("summaryTax").innerText = `₹${taxAmount.toFixed(2)}`;
+        document.getElementById("summaryGrandTotal").innerText = `₹${ultimateGrandTotal.toFixed(2)}`;
+    }
+
+    function applyDiscountToken() {
+        const token = document.getElementById("promoCodeInput").value.trim().toUpperCase();
+        const discountRow = document.getElementById("discountRow");
+        
+        if (token === "FLORIAN10") {
+            if (rawSubtotal === 0) return alert("Add items to your cart before processing promo keys!");
+            
+            // Deduct 10% from subtotal value amounts
+            appliedDiscount = rawSubtotal * 0.10;
+            document.getElementById("summaryDiscount").innerText = `-₹${appliedDiscount.toFixed(2)}`;
+            discountRow.classList.remove("d-none");
+            alert("Promo Verified! 10% Florist Discount successfully deducted. 🎉");
+            calculateTotals();
+        } else {
+            alert("Invalid promo token profile code string. Try entering 'FLORIAN10' instead!");
+        }
+    }
+
+    function processOrderPlacement(event) {
+        event.preventDefault(); // Intercept default reload action loops
+        
+        const token = localStorage.getItem("userToken");
+        if (!token) {
+            alert("🔒 Access Denied: Please log into your verified customer account profile before checking out.");
+            window.location.href = "customer-login.html";
+            return;
+        }
+
+        alert("Order successfully processed and submitted! 🌸 Your fresh arrangements are now being arranged for fulfillment delivery. Thank you for shopping with Florian Florist!");
+        localStorage.removeItem("userCart"); // Wipe items collection out of state rows on success
+        window.location.href = "dashboard.html"; // Route back down home portal landing files cleanly
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payments</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>Flower Shop Admin</h2>
+
+        <a href="indexadmin.html">Dashboard</a>
+        <a href="products.html">Products</a>
+        <a href="customers.html">Customers</a>
+        <a href="orders.html">Orders</a>
+        <a href="payments.html">Payments</a>
+        <a href="inventory.html">Inventory</a>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <div class="topbar">
+            <h1>Payments</h1>
+
+            <a href="add-payment.html">
+                <button>Add Payment</button>
+            </a>
+        </div>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Order ID</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="paymentTable"></tbody>
+        </table>
+
+    </div>
+
+</div>
+
+<script>
+fetch("http://localhost:5000/payments")
+.then(res => res.json())
+.then(data => {
+    let rows = "";
+
+    data.forEach(p => {
+        rows += `
+            <tr>
+                <td>${p.id}</td>
+                <td>${p.orderId}</td>
+                <td>${p.amount}</td>
+                <td>${p.method}</td>
+                <td>${p.status}</td>
+            </tr>
+        `;
+    });
+
+    document.getElementById("paymentTable").innerHTML = rows;
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>Flower Shop Admin</h2>
+
+        <a href="indexadmin.html">Dashboard</a>
+        <a href="products.html">Products</a>
+        <a href="customers.html">Customers</a>
+        <a href="orders.html">Orders</a>
+        <a href="payments.html">Payments</a>
+        <a href="inventory.html">Inventory</a>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <div class="topbar">
+            <h1>Inventory</h1>
+
+            <a href="add-inventory.html">
+                <button>Add Inventory</button>
+            </a>
+        </div>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Item Name</th>
+                    <th>Stock</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+
+            <tbody id="inventoryTable"></tbody>
+        </table>
+
+    </div>
+
+</div>
+
+<script>
+fetch("http://localhost:5000/inventory")
+.then(res => res.json())
+.then(data => {
+    let rows = "";
+
+    data.forEach(i => {
+        rows += `
+            <tr>
+                <td>${i.id}</td>
+                <td>${i.item}</td>
+                <td>${i.stock}</td>
+                <td>${i.price}</td>
+            </tr>
+        `;
+    });
+
+    document.getElementById("inventoryTable").innerHTML = rows;
+});
+</script>
+
+</body>
+</html>

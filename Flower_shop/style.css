@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+color:white;
+min-height:100vh;
+
+background:
+radial-gradient(circle at top right,
+rgba(168,184,154,0.15),
+transparent 30%),
+radial-gradient(circle at bottom left,
+rgba(168,184,154,0.08),
+transparent 30%),
+#0F0F0F;
+
+}
+
+/* NAVBAR */
+
+.navbar{
+width:100%;
+height:80px;
+
+background:#181818;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:0 30px;
+
+border-bottom:1px solid #2A2A2A;
+
+position:sticky;
+top:0;
+
+z-index:100;
+
+backdrop-filter:blur(10px);
+
+box-shadow:0 4px 20px rgba(0,0,0,0.35);
+
+}
+
+/* LOGO */
+
+.logo-section{
+display:flex;
+align-items:center;
+}
+
+.logo{
+width:55px;
+height:55px;
+object-fit:contain;
+margin-right:12px;
+}
+
+.logo-section h2{
+font-size:26px;
+font-weight:600;
+letter-spacing:1px;
+}
+
+/* ICONS */
+
+.nav-icons{
+font-size:26px;
+}
+
+.nav-icons i{
+cursor:pointer;
+transition:0.3s;
+}
+
+.nav-icons i:hover{
+color:#A8B89A;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:250px;
+min-height:calc(100vh - 80px);
+
+background:#181818;
+
+padding-top:25px;
+
+border-right:1px solid #2A2A2A;
+
+}
+
+.sidebar a{
+display:flex;
+align-items:center;
+gap:12px;
+
+color:#B0B0B0;
+text-decoration:none;
+
+margin:6px 10px;
+padding:14px 18px;
+
+border-radius:14px;
+
+transition:0.3s;
+
+}
+
+.sidebar a:hover{
+background:#222222;
+color:#A8B89A;
+
+transform:translateX(5px);
+
+}
+
+.active{
+background:#222222;
+color:#A8B89A !important;
+}
+
+/* MAIN */
+
+.main-content{
+flex:1;
+padding:40px;
+}
+
+.main-content h1{
+font-size:38px;
+margin-bottom:10px;
+}
+
+/* WELCOME BOX */
+
+.welcome-card{
+background:linear-gradient(
+135deg,
+#A8B89A,
+#7E8D73
+);
+
+color:black;
+
+padding:30px;
+
+border-radius:24px;
+
+margin-top:20px;
+margin-bottom:35px;
+
+box-shadow:0 10px 30px rgba(168,184,154,0.25);
+
+}
+
+.welcome-card h2{
+margin-bottom:10px;
+}
+
+/* DASHBOARD CARDS */
+
+.stats{
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.card{
+background:
+linear-gradient(
+145deg,
+#1E1E1E,
+#262626);
+
+padding:30px;
+
+border-radius:22px;
+
+border:1px solid rgba(168,184,154,0.15);
+
+transition:0.3s;
+
+}
+
+.card:hover{
+transform:translateY(-8px);
+
+box-shadow:
+0 12px 30px
+rgba(168,184,154,0.18);
+
+}
+
+.card h2{
+font-size:42px;
+font-weight:700;
+}
+
+.card p{
+color:#A8B89A;
+margin-top:10px;
+}
+
+/* TABLES */
+
+.table-container{
+margin-top:30px;
+
+background:#1E1E1E;
+
+padding:25px;
+
+border-radius:20px;
+
+border:1px solid #2A2A2A;
+
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+table th{
+text-align:left;
+
+padding:16px;
+
+color:#A8B89A;
+
+border-bottom:1px solid #333;
+
+}
+
+table td{
+padding:16px;
+border-bottom:1px solid #333;
+}
+
+table tr:hover{
+background:#222222;
+}
+
+/* BUTTONS */
+
+button,
+.edit-btn{
+background:#A8B89A;
+
+color:black;
+
+border:none;
+
+padding:12px 18px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+font-weight:600;
+
+transition:0.3s;
+
+}
+
+button:hover,
+.edit-btn:hover{
+transform:translateY(-2px);
+}
+
+.delete-btn{
+background:#2A2A2A;
+
+color:white;
+
+border:none;
+
+padding:12px 18px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+}
+
+/* FORMS */
+
+input,
+select{
+width:100%;
+
+padding:14px;
+
+margin-bottom:15px;
+
+background:#1E1E1E;
+
+color:white;
+
+border:1px solid #333;
+
+border-radius:12px;
+
+outline:none;
+
+}
+
+input:focus{
+border-color:#A8B89A;
+}
+
+/* STATUS */
+
+.delivered,
+.paid,
+.available,
+.active-customer{
+color:#6CFF8F;
+font-weight:600;
+}
+
+.pending,
+.low-stock{
+color:#FFD76C;
+font-weight:600;
+}
+
+.shipped{
+color:#6CB8FF;
+font-weight:600;
+}
+
+.failed,
+.cancelled,
+.out-stock,
+.inactive-customer{
+color:#FF6B6B;
+font-weight:600;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-track{
+background:#151515;
+}
+
+::-webkit-scrollbar-thumb{
+background:#A8B89A;
+border-radius:20px;
+}
